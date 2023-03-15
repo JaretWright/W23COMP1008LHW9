@@ -30,10 +30,10 @@ public class Student extends Person {
     }
 
     public void setStudentNum(int studentNum) {
-        if (studentNum>= 1000000 && studentNum <= 9999999)
+        if (studentNum>= 100000000 && studentNum <= 999999999)
             this.studentNum = studentNum;
         else
-            throw new IllegalArgumentException("student number must be a 7 digit number");
+            throw new IllegalArgumentException("student number must be a 9 digit number");
     }
 
     public ArrayList<Grade> getGrades() {
@@ -46,6 +46,19 @@ public class Student extends Person {
     @Override
     public String toString()
     {
-        return String.format("%s, student number: %d",super.toString(),studentNum);
+        return String.format("%s, student number: %d avg grade %.1f",super.toString(),studentNum,
+                getAvgGrade());
+    }
+
+    public double getAvgGrade()
+    {
+        if (grades.size()==0)
+            return -1;
+
+        double total = 0;
+        for (Grade grade : grades)
+            total += grade.getGrade();
+
+        return total/grades.size();
     }
 }
