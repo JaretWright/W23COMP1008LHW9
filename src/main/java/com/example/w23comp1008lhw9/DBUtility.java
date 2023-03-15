@@ -56,4 +56,36 @@ public class DBUtility {
         return courses;
     }
 
+    private static ArrayList<Grade> getGradesFromDB(int studentNum)
+    {
+        ArrayList<Grade> grades = new ArrayList<>();
+
+        //connect to the database
+        //try () with round brackets indicates that it is a "try with resources", that
+        //means anything inside the () will automatically be closed when the method
+        //completes
+        try (
+                Connection conn = DriverManager.getConnection(connectUrl,user,password);
+                Statement statement = conn.createStatement();
+                ResultSet resultSet =
+                        statement.executeQuery("SELECT * FROM grades WHERE studentNum ="+studentNum);
+        )
+        {
+            //loop over the resultSet and create Course objects
+            while (resultSet.next())
+            {
+                int crn = resultSet.getInt("crn");
+                int grade = resultSet.getInt("grade");
+
+                grades.add(new Grade(studentNum,crn,grade));
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return grades;
+    }
+
 }
