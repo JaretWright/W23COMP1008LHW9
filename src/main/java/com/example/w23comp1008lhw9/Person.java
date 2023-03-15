@@ -1,6 +1,7 @@
 package com.example.w23comp1008lhw9;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Person {
     private String firstName, lastName, address;
@@ -64,6 +65,26 @@ public class Person {
     }
 
     public void setBirthday(LocalDate birthday) {
+        if (birthday.isAfter(LocalDate.now()))
+            throw new IllegalArgumentException("Birthday cannot be in the future");
+
         this.birthday = birthday;
+    }
+
+    /**
+     * This method will return the person's age in years
+     */
+    public int getAge()
+    {
+        return Period.between(birthday, LocalDate.now()).getYears();
+    }
+
+    /**
+     * The method will return the person's name and age
+     */
+    @Override
+    public String toString()
+    {
+        return String.format("%s %s age: %d years",firstName,lastName,getAge());
     }
 }
