@@ -1,6 +1,7 @@
 package com.example.w23comp1008lhw9;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Experiment {
     public static void main(String[] args) {
@@ -14,5 +15,12 @@ public class Experiment {
         System.out.println("Person: " + homer.toString());
         System.out.println("Student: "+bart.toString());
 
+        ArrayList<Course> courses = DBUtility.getCoursesFromDB();
+
+        for (Course course : courses)
+        {
+            System.out.printf("%d %s %s%n",course.getCrn(),course.getCourseCode(),
+                                            course.getCourseName());
+        }
     }
 }
