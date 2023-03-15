@@ -1,5 +1,11 @@
 package com.example.w23comp1008lhw9;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 public class DBUtility {
 
     private static String user="student";
@@ -15,5 +21,39 @@ public class DBUtility {
     //2.  We need to update the module.info file with using java.sql;
     //3.  We need the connection details defined above
 
+    /**
+     * This method will query the DB and return a list of all the courses
+     */
+    public static ArrayList<Course> getCoursesFromDB()
+    {
+        ArrayList<Course> courses = new ArrayList<>();
+
+        //connect to the database
+        //try () with round brackets indicates that it is a "try with resources", that
+        //means anything inside the () will automatically be closed when the method
+        //completes
+        try (
+               Connection conn = DriverManager.getConnection(connectUrl,user,password);
+               Statement statement = conn.createStatement();
+               ResultSet resultSet = statement.executeQuery("SELECT * FROM courses");
+                )
+        {
+            //loop over the resultSet and create Course objects
+            while (resultSet.next())
+            {
+                int crn = resultSet.getInt("crn");
+                String courseCode = resultSet.getString("courseCode");
+                String courseName = resultSet.getString("courseName");
+
+                courses.add(new Course(crn,courseCode,courseName));
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return courses;
+    }
 
 }
