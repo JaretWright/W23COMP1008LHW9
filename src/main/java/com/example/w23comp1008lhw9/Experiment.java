@@ -7,7 +7,12 @@ public class Experiment {
         Person homer = new Person("Homer","Simpson",
                 "342 Springfield Terrace", LocalDate.of(1968,02,13));
 
-        System.out.println(homer);
+        Student bart = new Student("bart","simpson",
+                "342 Springfield Terrace",
+                LocalDate.of(1982,04,15),1234567);
+
+        System.out.println("Person: " + homer.toString());
+        System.out.println("Student: "+bart.toString());
 
     }
 }
