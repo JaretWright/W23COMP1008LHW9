@@ -19,7 +19,6 @@ public class Experiment {
 
         ArrayList<Student> students = DBUtility.getStudentsFromDB();
 
-        for (Student student : students)
-            System.out.println(student);
+        System.out.println();
     }
 }
