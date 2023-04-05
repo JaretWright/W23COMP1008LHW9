@@ -85,6 +85,6 @@ public class Person {
     @Override
     public String toString()
     {
-        return String.format("%s %s age: %d years",firstName,lastName,getAge());
+        return String.format("%s %s",firstName,lastName);
     }
 }

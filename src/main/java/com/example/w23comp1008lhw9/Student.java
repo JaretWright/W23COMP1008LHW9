@@ -46,7 +46,7 @@ public class Student extends Person {
     @Override
     public String toString()
     {
-        return String.format("%s, student number: %d avg grade %.1f",super.toString(),studentNum,
+        return String.format("%s, student number: %d",super.toString(),studentNum,
                 getAvgGrade());
     }
 

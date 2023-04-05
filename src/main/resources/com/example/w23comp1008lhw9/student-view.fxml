@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.w23comp1008lhw9.StudentViewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.w23comp1008lhw9.StudentViewController">
+   <children>
+      <HBox layoutX="39.0" layoutY="45.0" prefHeight="600.0" prefWidth="1000.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <ListView fx:id="listView" prefHeight="383.0" prefWidth="409.0" />
+                  <Label fx:id="numStudentsLabel" text="Number of Students" />
+                  <Button mnemonicParsing="false" onAction="#exportToCSV" text="Export to CSV" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label fx:id="firstNameLabel" minWidth="300.0" text="First Name" />
+                  <Label fx:id="lastNameLabel" minWidth="300.0" text="Last Name" />
+                  <Label fx:id="ageLabel" minWidth="300.0" text="Age" />
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </HBox>
+   </children>
 </AnchorPane>
